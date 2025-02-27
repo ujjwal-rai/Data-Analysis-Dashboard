@@ -1,0 +1,127 @@
+.josefin-sans-regular {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.footer {
+    text-align: center;
+    margin: auto;
+    max-width: 80%;
+    border-top: 1px solid #989898;
+    padding: 15px 0px;
+    font-size: 13px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+}
+
+body {
+    background: rgb(193,237,241);
+    background: radial-gradient(circle, rgba(193,237,241,1) 0%, rgba(148,187,233,1) 100%);
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+#chatbot-reply {
+    margin-top: 20px;
+}
+
+#question {
+    border-radius: 5px;
+    height: 20px;
+    width: 200px;
+    line-height: 1em;
+}
+
+#ask-button {
+    display: inline !important;
+}
+
+#uploadForm {
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+.top {
+    align-items: center;
+    background: rgba(26, 26, 26, 0.2);
+    border: 1px dashed rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    bottom: 10px;
+    box-sizing: border-box;
+    display: flex;
+    height: 350px;
+    justify-content: center;
+    left: 10px;
+    line-height: 1.5;
+    margin: 10px 0 10px 0;
+    padding: 20px;
+    right: 10px;
+    text-size-adjust: 100%;
+    top: 10px;
+    width: 900px;
+}
+
+/* CSS */
+.button-64 {
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 5px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 70%;
+  min-width: 70px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+}
+
+.button-64 span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 40%;
+  height: 80%;
+  transition: 300ms;
+}
+
+.button-64:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 20px;
+    min-width: 100px;
+  }
+}
