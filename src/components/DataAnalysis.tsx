@@ -38,9 +38,7 @@ interface ChatMessage {
 
 // First, let's add proper typing for the numerical summary
 interface NumericalSummary {
-  [key: string]: {
-    [column: string]: number;
-  };
+  [key: string]: Record<string, number>;
 }
 
 const Plot = dynamic(
@@ -179,16 +177,24 @@ export default function DataAnalysis() {
             className="shadow-xl hover:shadow-2xl transition-all duration-300 border-t-4 border-fuchsia-500"
           >
             <Table 
-              dataSource={Object.entries(numericalSummary).map(([key, value]) => ({
-                metric: key,
-                ...(value as { [key: string]: number })  // Type assertion here
-              }))}
+              dataSource={Object.entries(numericalSummary).map(([key, value]) => {
+                // Create a new object with the metric and all values
+                return {
+                  metric: key,
+                  // Safely spread the value object
+                  ...Object.entries(value).reduce((acc, [colKey, colValue]) => ({
+                    ...acc,
+                    [colKey]: colValue
+                  }), {})
+                };
+              })}
               columns={[
                 { title: 'Metric', dataIndex: 'metric' },
-                ...Object.keys(numericalSummary[Object.keys(numericalSummary)[0]]).map(col => ({
+                ...(Object.keys(Object.values(numericalSummary)[0] || {}).map(col => ({
                   title: col,
-                  dataIndex: col
-                }))
+                  dataIndex: col,
+                  key: col
+                })))
               ]}
               pagination={false}
             />
