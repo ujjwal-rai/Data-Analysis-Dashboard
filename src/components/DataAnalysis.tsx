@@ -36,6 +36,13 @@ interface ChatMessage {
   content: string;
 }
 
+// First, let's add proper typing for the numerical summary
+interface NumericalSummary {
+  [key: string]: {
+    [column: string]: number;
+  };
+}
+
 const Plot = dynamic(
   () => import('react-plotly.js').then((Plotly) => Plotly.default),
   { ssr: false, loading: () => <div>Loading Plot...</div> }
@@ -44,7 +51,7 @@ const Plot = dynamic(
 export default function DataAnalysis() {
   const [loading, setLoading] = useState(false);
   const [dataTypeSummary, setDataTypeSummary] = useState<any[]>([]);
-  const [numericalSummary, setNumericalSummary] = useState<any>(null);
+  const [numericalSummary, setNumericalSummary] = useState<NumericalSummary | null>(null);
   const [visualizations, setVisualizations] = useState<Visualization[]>([]);
   const [correlationMatrix, setCorrelationMatrix] = useState<CorrelationMatrix | null>(null);
   const [datasetInfo, setDatasetInfo] = useState<DatasetInfo | null>(null);
@@ -174,7 +181,7 @@ export default function DataAnalysis() {
             <Table 
               dataSource={Object.entries(numericalSummary).map(([key, value]) => ({
                 metric: key,
-                ...value
+                ...(value as { [key: string]: number })  // Type assertion here
               }))}
               columns={[
                 { title: 'Metric', dataIndex: 'metric' },
